@@ -28,7 +28,6 @@ module.exports.createArticle = async (req, res, next) => {
       image,
       owner,
     });
-    article = await article.populate(['owner']).execPopulate();
     res.status(201).send(article);
   } catch (err) {
     next(new BadRequesError(err.message));
@@ -47,7 +46,6 @@ module.exports.deleteArticleById = async (req, res, next) => {
     }
     */
     article = await article.remove();
-    article = await article.populate(['owner']).execPopulate();
     res.status(201).send(article);
   } catch (err) {
     if (err instanceof mongoose.Error.CastError) {
@@ -59,8 +57,7 @@ module.exports.deleteArticleById = async (req, res, next) => {
 };
 
 module.exports.getArticles = (req, res, next) => {
-  Article.find({})
-    .populate(['owner', 'likes'])
+  Article.find({ owner: req.user._id })
     .then((articles) => res.status(200).send(articles))
     .catch(next);
 };

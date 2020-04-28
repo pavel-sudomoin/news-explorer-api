@@ -37,6 +37,7 @@ module.exports.createUser = (req, res, next) => {
       password: hash,
     }))
     .then((user) => {
+      res.clearCookie('jwt');
       res.status(201).send(user);
     })
     .catch((err) => {
