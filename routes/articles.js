@@ -13,8 +13,8 @@ const {
   idValidator,
 } = require('../validators/validators');
 
-router.get('/', getArticles);
 router.post('/', bodyValidator(articleValidate), createArticle);
 router.delete('/:id', idValidator, deleteArticleById);
+router.get('/', getArticles);
 
 module.exports = router;

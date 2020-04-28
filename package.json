@@ -1,6 +1,6 @@
 {
   "name": "news-explorer-api",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "description": "Yandex.Praktikum diploma 07-stream",
   "scripts": {
     "start": "node app.js",
