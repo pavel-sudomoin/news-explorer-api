@@ -14,6 +14,7 @@ const users = require('./routes/users.js');
 const wrongRequests = require('./routes/wrong-requests.js');
 const errorHandler = require('./middlewares/error-handler.js');
 const NotFoundError = require('./errors/not-found-error');
+const rateLimiter = require('./config/rate-limiter');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const { PORT = 3000 } = process.env;
@@ -45,6 +46,8 @@ app.use((err, req, res, next) => {
 });
 
 app.use(cookieParser());
+
+app.use(rateLimiter);
 
 app.use(requestLogger);
 
