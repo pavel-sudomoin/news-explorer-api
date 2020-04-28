@@ -55,7 +55,7 @@ app.get('/crash-test', () => {
 });
 app.post('/signin', bodyValidator(loginValidate), login);
 app.post('/signup', bodyValidator(userValidate), createUser);
-app.use('/cards', auth, articles);
+app.use('/articles', auth, articles);
 app.use('/users', auth, users);
 app.use('*', wrongRequests);
 

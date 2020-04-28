@@ -37,7 +37,7 @@ module.exports.createArticle = async (req, res, next) => {
 
 module.exports.deleteArticleById = async (req, res, next) => {
   try {
-    let article = await Article.findById(req.params.id);
+    let article = await Article.findById(req.params.id).select('+owner');
     if (!article || article.owner.toString() !== req.user._id) {
       throw new NotFoundError('Вы не сохраняли статью с таким id');
     }

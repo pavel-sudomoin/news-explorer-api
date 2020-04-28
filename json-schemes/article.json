@@ -1,6 +1,6 @@
 {
   "$schema": "http://json-schema.org/schema#",
-  "$id": "http://api.sudomoin-pavel-news-explorer.tk/schemas/card.json",
+  "$id": "http://api.sudomoin-pavel-news-explorer.tk/schemas/article.json",
   "type": "object",
   "properties": {
     "keyword": {

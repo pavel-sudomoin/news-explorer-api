@@ -20,6 +20,3 @@
   "required": ["name", "email", "password"],
   "additionalProperties": false
 }
-
-
-api.sudomoin-pavel-news-explorer.tk

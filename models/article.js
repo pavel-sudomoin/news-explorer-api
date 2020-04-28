@@ -49,6 +49,7 @@ function showOnlyWhiteListFields(doc, ret) {
     source: ret.source,
     link: ret.link,
     image: ret.image,
+    _id: ret._id,
   };
   return retJson;
 }
