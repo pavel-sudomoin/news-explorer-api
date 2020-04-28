@@ -10,10 +10,8 @@ function validator(next, data, validate) {
   next();
 }
 
-module.exports.bodyValidator = (validate) => {
-  return (req, res, next) => {
-    validator(next, req.body, validate);
-  };
+module.exports.bodyValidator = (validate) => (req, res, next) => {
+  validator(next, req.body, validate);
 };
 
 module.exports.idValidator = (req, res, next) => {

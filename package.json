@@ -1,6 +1,6 @@
 {
   "name": "news-explorer-api",
-  "version": "0.13.0",
+  "version": "0.14.0",
   "description": "Yandex.Praktikum diploma 07-stream",
   "scripts": {
     "start": "node app.js",
@@ -24,6 +24,7 @@
     "nodemon": "^2.0.3"
   },
   "dependencies": {
+    "ajv": "^6.12.2",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
