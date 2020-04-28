@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/schema#",
+  "$id": "http://api.sudomoin-pavel-news-explorer.tk/schemas/card.json",
+  "type": "object",
+  "properties": {
+    "keyword": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "text": {
+      "type": "string"
+    },
+    "date": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string",
+      "format": "url"
+    },
+    "image": {
+      "type": "string",
+      "format": "url"
+    }
+  },
+  "required": ["keyword", "title", "text", "date", "source", "link", "image"],
+  "additionalProperties": false
+}
