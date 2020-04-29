@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const helmet = require('helmet');
+const cors = require('cors');
 
 const { login, createUser } = require('./controllers/users.js');
 const { loginValidate, userValidate } = require('./validators/compiled-schemes');
@@ -32,12 +33,20 @@ mongoose.connect('mongodb://localhost:27017/newsdb', {
 
 app.use(helmet());
 
+app.use(cors());
+
+/*
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', '*');
   res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
-  next();
+  if (req.method === 'OPTIONS') {
+    res.sendStatus(200);
+  } else {
+    next();
+  }
 });
+*/
 
 app.use(bodyParser.json());
 app.use((err, req, res, next) => {
