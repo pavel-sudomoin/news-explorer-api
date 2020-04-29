@@ -2,7 +2,7 @@ const jwt = require('jsonwebtoken');
 
 const User = require('../models/user');
 
-const { JwtTokenKey } = require('../config/config');
+const { JWT_TOKEN } = require('../configs/token-key');
 
 const UnauthorizedError = require('../errors/unauthorized-error');
 
@@ -13,7 +13,7 @@ module.exports = async (req, res, next) => {
     if (!token) {
       throw new UnauthorizedError('Необходима авторизация');
     }
-    payload = jwt.verify(token, JwtTokenKey);
+    payload = jwt.verify(token, JWT_TOKEN);
     const user = await User.findById(payload._id);
     if (!user) {
       throw new UnauthorizedError('Необходима авторизация');

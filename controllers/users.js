@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 
 const User = require('../models/user');
 
-const { JwtTokenKey } = require('../config/config');
+const { JWT_TOKEN } = require('../configs/token-key');
 
 const BadRequesError = require('../errors/bad-request-error');
 const UnauthorizedError = require('../errors/unauthorized-error');
@@ -11,7 +11,7 @@ const UnauthorizedError = require('../errors/unauthorized-error');
 function addCookieToResponse(res, user) {
   const token = jwt.sign(
     { _id: user._id },
-    JwtTokenKey,
+    JWT_TOKEN,
     { expiresIn: '7d' },
   );
   res
