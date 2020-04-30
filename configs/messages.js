@@ -71,6 +71,7 @@ module.exports = {
     },
     bodyFormat: {
       isAdditionalProperties: 'Не должно быть дополнительных свойств',
+      isWrongJson: 'Передан некорректный JSON',
     },
   },
 };

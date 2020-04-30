@@ -7,7 +7,9 @@ const helmet = require('helmet');
 const cors = require('cors');
 
 const errorHandler = require('./middlewares/error-handler');
+const bodyParserErrorHandler = require('./middlewares/body-parser-error-handler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+
 const { databaseUrl, databaseSettings } = require('./configs/database');
 const rateLimiter = require('./configs/rate-limiter');
 
@@ -23,7 +25,7 @@ mongoose.connect(databaseUrl, databaseSettings);
 
 app.use(helmet());
 app.use(cors());
-app.use(bodyParser.json());
+app.use(bodyParser.json(), bodyParserErrorHandler);
 app.use(cookieParser());
 app.use(rateLimiter);
 app.use(requestLogger);
