@@ -45,7 +45,6 @@ function showOnlyWhiteListFields(doc, ret) {
   const retJson = {
     name: ret.name,
     email: ret.email,
-    _id: ret._id,
   };
   return retJson;
 }
