@@ -15,10 +15,10 @@
 К серверу можно обратиться по его IP-адресу, либо по доменному имени.
 
 Домен:
-https://api.sudomoin-pavel-news-explorer.tk
-https://www.api.sudomoin-pavel-news-explorer.tk
-http://api.sudomoin-pavel-news-explorer.tk
-http://www.api.sudomoin-pavel-news-explorer.tk
+* https://api.sudomoin-pavel-news-explorer.tk
+* https://www.api.sudomoin-pavel-news-explorer.tk
+* http://api.sudomoin-pavel-news-explorer.tk
+* http://www.api.sudomoin-pavel-news-explorer.tk
 
 IP-адрес:
 http://130.193.45.69
