@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 
 const Article = require('../models/article');
 
+const messages = require('../configs/messages');
 const NotFoundError = require('../errors/not-found-error');
-// const ForbiddenError = require('../errors/forbidden-error');
 const BadRequesError = require('../errors/bad-request-error');
 
 module.exports.createArticle = async (req, res, next) => {
@@ -18,7 +18,7 @@ module.exports.createArticle = async (req, res, next) => {
   } = req.body;
   const owner = req.user._id;
   try {
-    let article = await Article.create({
+    const article = await Article.create({
       keyword,
       title,
       text,
@@ -38,18 +38,13 @@ module.exports.deleteArticleById = async (req, res, next) => {
   try {
     let article = await Article.findById(req.params.id).select('+owner');
     if (!article || article.owner.toString() !== req.user._id) {
-      throw new NotFoundError('Вы не сохраняли статью с таким id');
+      throw new NotFoundError(messages.article.isWrongArticle);
     }
-    /*
-    if (article.owner.toString() !== req.user._id) {
-      throw new ForbiddenError('Недостаточно прав для удаления данной статьи');
-    }
-    */
     article = await article.remove();
     res.status(201).send(article);
   } catch (err) {
     if (err instanceof mongoose.Error.CastError) {
-      next(new BadRequesError('Некорректный id статьи'));
+      next(new BadRequesError(messages.validation.id.isNotObjectId));
     } else {
       next(err);
     }

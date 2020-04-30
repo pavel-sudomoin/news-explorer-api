@@ -1,36 +1,38 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
 
+const messages = require('../configs/messages');
+
 const articleSchema = new mongoose.Schema({
   keyword: {
     type: String,
-    required: [true, 'Не указано ключевое слово'],
+    required: [true, messages.validation.article.keyword.isRequired],
   },
   title: {
     type: String,
-    required: [true, 'Не указан заголовок статьи'],
+    required: [true, messages.validation.article.title.isRequired],
   },
   text: {
     type: String,
-    required: [true, 'Не указан текст статьи'],
+    required: [true, messages.validation.article.text.isRequired],
   },
   date: {
     type: String,
-    required: [true, 'Не указана дата статьи'],
+    required: [true, messages.validation.article.date.isRequired],
   },
   source: {
     type: String,
-    required: [true, 'Не указан источник статьи'],
+    required: [true, messages.validation.article.source.isRequired],
   },
   link: {
     type: String,
-    validate: [validator.isURL, 'Некорректная ссылка на статью'],
-    required: [true, 'Не указана ссылка на статью'],
+    validate: [validator.isURL, messages.validation.article.link.isNotUrl],
+    required: [true, messages.validation.article.link.isRequired],
   },
   image: {
     type: String,
-    validate: [validator.isURL, 'Некорректная ссылка на иллюстрацию'],
-    required: [true, 'Не указана ссылка на иллюстрацию'],
+    validate: [validator.isURL, messages.validation.article.image.isNotUrl],
+    required: [true, messages.validation.article.image.isRequired],
   },
   owner: {
     type: mongoose.Schema.Types.ObjectId,

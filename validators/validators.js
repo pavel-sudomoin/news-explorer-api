@@ -1,12 +1,15 @@
 const BadRequesError = require('../errors/bad-request-error');
 const {
-  ajv,
   idValidate,
 } = require('./compiled-schemes.js');
 
+function showErrorMessages(errors) {
+  return errors.reduce((sum, current) => `${sum}${current.message}, `, '').slice(0, -2);
+}
+
 function validator(next, data, validate) {
   const valid = validate(data);
-  if (!valid) next(new BadRequesError(ajv.errorsText(validate.errors)));
+  if (!valid) next(new BadRequesError(showErrorMessages(validate.errors)));
   next();
 }
 

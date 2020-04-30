@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 
 const { JWT_TOKEN } = require('../configs/token-key');
-
+const messages = require('../configs/messages');
 const BadRequesError = require('../errors/bad-request-error');
 const UnauthorizedError = require('../errors/unauthorized-error');
 
@@ -21,10 +21,10 @@ function addCookieToResponse(res, user) {
 
 function usersPasswordHandler(pass) {
   if (!pass) {
-    throw new BadRequesError('user validation failed: password: Не указан пароль');
+    throw new BadRequesError(messages.validation.user.password.isRequired);
   }
   if (pass.length < 8) {
-    throw new BadRequesError('user validation failed: password: Пароль должен быть не короче 8 символов');
+    throw new BadRequesError(messages.validation.user.password.isShort);
   }
   return bcrypt.hash(pass, 10);
 }
@@ -43,7 +43,7 @@ module.exports.createUser = (req, res, next) => {
     .catch((err) => {
       res.clearCookie('jwt');
       if (err.name === 'MongoError' && err.code === 11000) {
-        next(new BadRequesError('user validation failed: email: Уже существует пользователь с данным email'));
+        next(new BadRequesError(messages.registration.isNotUniqueEmail));
       } else {
         next(err);
       }
@@ -55,7 +55,7 @@ module.exports.login = (req, res, next) => {
   return User.findUserByCredentials(email, password)
     .then((user) => {
       addCookieToResponse(res, user);
-      res.status(200).send({ message: 'Вы успешно авторизованы' });
+      res.status(200).send({ message: messages.authorization.isSuccess });
     })
     .catch((err) => {
       res.clearCookie('jwt');
@@ -67,7 +67,7 @@ module.exports.getUserInfo = (req, res, next) => {
   User.findById(req.user._id)
     .then((user) => {
       if (!user) {
-        throw new UnauthorizedError('Необходима авторизация');
+        throw new UnauthorizedError(messages.authorization.isRequired);
       } else {
         res.status(200).send(user);
       }

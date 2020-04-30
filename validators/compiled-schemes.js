@@ -1,4 +1,5 @@
 const Ajv = require('ajv');
+const ajvErrors = require('ajv-errors');
 const { isEmail } = require('validator');
 
 const articleSheme = require('../json-schemes/article');
@@ -7,6 +8,8 @@ const loginSheme = require('../json-schemes/login');
 const idSheme = require('../json-schemes/id');
 
 const ajv = new Ajv({
+  allErrors: true,
+  jsonPointers: true,
   schemas:
     [
       articleSheme,
@@ -16,6 +19,8 @@ const ajv = new Ajv({
     ],
   format: 'full',
 }).addFormat('email', isEmail);
+
+ajvErrors(ajv);
 
 module.exports.articleValidate = ajv.getSchema('http://api.sudomoin-pavel-news-explorer.tk/schemas/article.json');
 module.exports.userValidate = ajv.getSchema('http://api.sudomoin-pavel-news-explorer.tk/schemas/user.json');
