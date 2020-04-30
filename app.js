@@ -12,6 +12,7 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 
 const { databaseUrl, databaseSettings } = require('./configs/database');
 const rateLimiter = require('./configs/rate-limiter');
+const corsOptions = require('./configs/cors');
 
 const router = require('./routes/index');
 
@@ -24,7 +25,7 @@ app.listen(PORT);
 mongoose.connect(databaseUrl, databaseSettings);
 
 app.use(helmet());
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(bodyParser.json(), bodyParserErrorHandler);
 app.use(cookieParser());
 app.use(rateLimiter);
