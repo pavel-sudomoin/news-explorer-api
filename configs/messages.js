@@ -70,7 +70,7 @@ module.exports = {
       isNotObjectId: 'Некорректный id',
     },
     bodyFormat: {
-      isAdditionalProperties: 'Не должно быть дополнительных свойств',
+      isAdditionalProperties: 'Дополнительные поля в теле запроса запрещены',
       isWrongJson: 'Передан некорректный JSON',
     },
   },
