@@ -4,5 +4,6 @@ module.exports = {
     'https://www.sudomoin-pavel-news-explorer.tk',
     'http://sudomoin-pavel-news-explorer.tk',
     'http://www.sudomoin-pavel-news-explorer.tk',
+    'http://localhost:8080',
   ],
 };
