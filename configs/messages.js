@@ -15,6 +15,9 @@ module.exports = {
     isSuccess: 'Вы успешно авторизованы',
     isWrongData: 'Неправильные почта или пароль',
   },
+  logout: {
+    isSuccess: 'Вы успешно вышли из аккаунта',
+  },
   article: {
     isWrongArticle: 'Вы не сохраняли статью с таким id',
   },

@@ -77,3 +77,8 @@ module.exports.getUserInfo = (req, res, next) => {
       next(err);
     });
 };
+
+module.exports.logout = (req, res) => {
+  res.clearCookie('jwt');
+  res.status(200).send({ message: messages.logout.isSuccess });
+};
