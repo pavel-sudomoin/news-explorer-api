@@ -4,7 +4,7 @@ module.exports = {
     'https://www.sudomoin-pavel-news-explorer.tk',
     'http://sudomoin-pavel-news-explorer.tk',
     'http://www.sudomoin-pavel-news-explorer.tk',
-    'http://localhost:8080',
+    'https://pavel-sudomoin.github.io/news-explorer-frontend',
   ],
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
