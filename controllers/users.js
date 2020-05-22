@@ -16,7 +16,12 @@ function addCookieToResponse(res, user) {
   );
   res
     .status(200)
-    .cookie('jwt', token, { maxAge: 604800000, httpOnly: true, sameSite: true });
+    .cookie('jwt', token, {
+      maxAge: 604800000,
+      httpOnly: true,
+      sameSite: 'None',
+      secure: true,
+    });
 }
 
 function usersPasswordHandler(pass) {
