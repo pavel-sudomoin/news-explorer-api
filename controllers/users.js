@@ -7,6 +7,7 @@ const { JWT_TOKEN } = require('../configs/token-key');
 const messages = require('../configs/messages');
 const BadRequesError = require('../errors/bad-request-error');
 const UnauthorizedError = require('../errors/unauthorized-error');
+const ConflictError = require('../errors/conflict-error');
 
 function addCookieToResponse(res, user) {
   const token = jwt.sign(
@@ -48,7 +49,7 @@ module.exports.createUser = (req, res, next) => {
     .catch((err) => {
       res.clearCookie('jwt');
       if (err.name === 'MongoError' && err.code === 11000) {
-        next(new BadRequesError(messages.registration.isNotUniqueEmail));
+        next(new ConflictError(messages.registration.isNotUniqueEmail));
       } else {
         next(err);
       }
