@@ -1,4 +1,5 @@
 const messages = require('../configs/messages');
+const patterns = require('../configs/patterns');
 
 module.exports = {
   $schema: 'http://json-schema.org/schema#',
@@ -7,12 +8,10 @@ module.exports = {
   properties: {
     name: {
       type: 'string',
-      minLength: 2,
-      maxLength: 30,
+      pattern: patterns.name.source,
       errorMessage: {
         type: messages.validation.user.name.isWrongType,
-        minLength: messages.validation.user.name.isShort,
-        maxLength: messages.validation.user.name.isLong,
+        pattern: messages.validation.user.name.isWrongPattern,
       },
     },
     email: {

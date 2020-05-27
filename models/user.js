@@ -3,11 +3,14 @@ const validator = require('validator');
 const bcrypt = require('bcryptjs');
 
 const messages = require('../configs/messages');
+const patterns = require('../configs/patterns');
 const UnauthorizedError = require('../errors/unauthorized-error');
 
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
+    trim: true,
+    match: [patterns.name, messages.validation.user.name.isWrongPattern],
     minlength: [2, messages.validation.user.name.isShort],
     maxlength: [30, messages.validation.user.name.isLong],
     required: [true, messages.validation.user.name.isRequired],

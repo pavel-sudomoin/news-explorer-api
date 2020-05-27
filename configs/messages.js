@@ -24,8 +24,9 @@ module.exports = {
   validation: {
     user: {
       name: {
-        isShort: 'Длина поля name минимум 2 символа',
-        isLong: 'Длина поля name максимум 30 символов',
+        isShort: 'Имя должно быть не менее 2 символов',
+        isLong: 'Имя должно быть не более 30 символов',
+        isWrongPattern: 'Имя должно быть от 2 до 30 символов без пробелов в начале и конце',
         isWrongType: isNotString('name'),
         isRequired: isRequired('name'),
       },
