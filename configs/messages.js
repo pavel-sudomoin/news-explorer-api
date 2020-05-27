@@ -36,6 +36,7 @@ module.exports = {
       },
       password: {
         isShort: 'Длина пароля минимум 8 символов',
+        isWrongPattern: 'Пароль не менее 8 символов, допустимы только цифры и латинские буквы',
         isWrongType: isNotString('password'),
         isRequired: isRequired('password'),
       },

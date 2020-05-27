@@ -24,10 +24,10 @@ module.exports = {
     },
     password: {
       type: 'string',
-      minLength: 8,
+      pattern: patterns.password.source,
       errorMessage: {
         type: messages.validation.user.password.isWrongType,
-        minLength: messages.validation.user.password.isShort,
+        pattern: messages.validation.user.password.isWrongPattern,
       },
     },
   },

@@ -5,6 +5,7 @@ const User = require('../models/user');
 
 const { JWT_TOKEN } = require('../configs/token-key');
 const messages = require('../configs/messages');
+const patterns = require('../configs/patterns');
 const BadRequesError = require('../errors/bad-request-error');
 const UnauthorizedError = require('../errors/unauthorized-error');
 const ConflictError = require('../errors/conflict-error');
@@ -29,8 +30,8 @@ function usersPasswordHandler(pass) {
   if (!pass) {
     throw new BadRequesError(messages.validation.user.password.isRequired);
   }
-  if (pass.length < 8) {
-    throw new BadRequesError(messages.validation.user.password.isShort);
+  if (!patterns.password.test(pass)) {
+    throw new BadRequesError(messages.validation.user.password.isWrongPattern);
   }
   return bcrypt.hash(pass, 10);
 }
