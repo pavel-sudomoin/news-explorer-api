@@ -17,10 +17,10 @@
 К серверу можно обратиться по его доменному имени.
 
 Домен:
-* https://api.sudomoin-pavel-news-explorer.tk
-* https://www.api.sudomoin-pavel-news-explorer.tk
-* http://api.sudomoin-pavel-news-explorer.tk
-* http://www.api.sudomoin-pavel-news-explorer.tk
+* <s>https://api.sudomoin-pavel-news-explorer.tk</s>
+* <s>https://www.api.sudomoin-pavel-news-explorer.tk</s>
+* <s>http://api.sudomoin-pavel-news-explorer.tk</s>
+* <s>http://www.api.sudomoin-pavel-news-explorer.tk</s>
 
 На сервере настроен автоматический редирект с http на https.
 
